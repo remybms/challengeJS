@@ -1,23 +1,32 @@
-import counter from '@/components/game';
-import Head from 'next/head'
-import { useEffect } from 'react';
+import Head from 'next/head';
+import React, { useState } from 'react'
 
 function timer() {
-    var sec = 30
-    var timer = setInterval(function () {
-        if (typeof document !== 'undefined') {
-            document.getElementById('safeTimerDisplay').innerHTML = sec;
-            sec--;
-            if (sec < 0) {
-                clearInterval(timer)
-            }
-        }
-    }, 1000)
+    if (typeof document !== 'undefined') {
+        document.getElementById("gameStart").addEventListener("click", function () {
+            var sec = 30
+            var timer = setInterval(function () {
+                if (typeof document !== 'undefined') {
+                    document.getElementById('safeTimerDisplay').innerHTML = sec;
+                    sec--;
+                    if (sec < 0) {
+                        clearInterval(timer)
+                    }
+                }
+            }, 1000)
+        })
+    }
+
 }
 
+function getImageRandom() {
+    return Math.floor(Math.random() * 8) + '.png'
+}
+
+
 export default function Home() {
-    var image = counter()
-    console.log(image)
+    var image = getImageRandom()
+    var src = '/magasinsHalfBlurred/' + image
     return (
         <><Head>
             <title>Bon courage</title>
@@ -25,12 +34,12 @@ export default function Home() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-            <div id='safeTimerDisplay'/>
+            <div id='safeTimerDisplay'></div>
+            <button id='gameStart' onClick={timer()}>launch timer</button>
+            <img src={src} id='imageHalfBlurred' ></img>
+
             <form>
                 <input type='text'></input>
-            </form>
-            <script>
-                document.getElementById(safeTimerDisplay).onload = function() {timer()};
-            </script></>
+            </form></>
     )
 }

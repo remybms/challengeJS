@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
 
 export default function Home() {
@@ -23,11 +24,12 @@ export default function Home() {
           </div>
           <div>
             Pour commencer, veuillez sélectionner votre niveau de difficulté :
-            <form action='' className={styles.form}>
-              <button value='easy'>Facile</button>
+            <div className={styles.form}>
+              <Link href="/easy">Facile</Link>
               <button value='medium'>Intermédiaire</button>
               <button value='hard'>Difficile</button>
-            </form>
+            </div>
+              
           </div>
           
       </main>

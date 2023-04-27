@@ -31,9 +31,8 @@ export function isAnswer(value, timeLeft, answer, URLanswer) {
         if (xhr.status === 200) {
             const reader = new FileReader();
             reader.onload = function () {
-                console.log(answer)
-                if (answer == reader.result){
-                    value(true)
+                if (value == reader.result){
+                    answer(true)
                 }
             };
             reader.readAsText(xhr.response);

@@ -15,7 +15,7 @@ export default function Easy() {
     const [rightAnswer, checkAnswer] = useState(false)
 
     const src = '/magasins/' + image + '.png'
-    const srcFullBlurred = '/magasinsFullBlurred/' + image + '.png'
+    const srcFullBlurred = '/titleFullBlurred/' + image + '.png'
     const indice = '/indices/' + image + '.png'
     const answer = '/answers/' + image + '.txt'
 

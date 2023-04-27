@@ -9,7 +9,7 @@ export default function Easy() {
     const [gameStarted, updateGameStarted] = useState(false)
 
     const [timeLeft, noTimeLeft] = useState(true)
-    
+
     const [guessedAnswer, setAnswer] = useState(String)
 
     const [rightAnswer, checkAnswer] = useState(false)
@@ -32,23 +32,32 @@ export default function Easy() {
                         <h1 id='safeTimerDisplay'></h1>
                         <img src={srcHalfBlurred} id='imageHalfBlurred'></img>
                         <form>
-                            <input type='text' id='textAnswer' onChange={(e) => {setAnswer(e.target.value)}}/>
+                            <input type='text' id='textAnswer' onChange={(e) => { setAnswer(e.target.value) }} />
                         </form>
-                        
+
                         <button id='submitAnswer' onClick={() => isAnswer(guessedAnswer, noTimeLeft, checkAnswer, answer)}>envoyer</button>
 
-                        </>) : (<>
-
-                        <h1> TEMPS ÉCOULÉ !</h1>
+                    </>) : (<>
+                        {rightAnswer ? (<>
+                        <h1> TEMPS ÉCOULÉ ! Bien joué champion</h1>
                         <img src={src} id='image'></img>
                         <div>{guessedAnswer}</div>
+                        </>
+                        ) : (<> 
+                        <h1> TEMPS ÉCOULÉ ! Une prochaine fois</h1>
+                        <img src={src} id='image'></img>
+                        <div>{guessedAnswer}</div>
+                        </>
+                        )}
+                        
+                        
 
-                        </>)}
+                    </>)}
                 </>
-                    ) : (
-                    <>
-                        <button id='gameStart' onClick={timer(updateGameStarted, noTimeLeft)} >launch the game</button>
-                    </>
-                    )}
-                </>)     
+            ) : (
+                <>
+                    <button id='gameStart' onClick={() => timer(updateGameStarted, noTimeLeft)} >launch the game</button>
+                </>
+            )}
+        </>)
 }

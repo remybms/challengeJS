@@ -15,8 +15,8 @@ export default function Easy() {
     const [rightAnswer, checkAnswer] = useState(false)
 
     const src = '/magasins/' + image + '.png'
-    const srcHalfBlurred = '/magasinsHalfBlurred/' + image + '.png'
-
+    const srcHalfBlurred = '/titleHalfBlurred/' + image + '.png'
+    const indice = '/indices/' + image + '.png'
     const answer = '/answers/' + image + '.txt'
 
     return (
@@ -30,7 +30,11 @@ export default function Easy() {
                 <>
                     {timeLeft ? (<>
                         <h1 id='safeTimerDisplay'></h1>
-                        <img src={srcHalfBlurred} id='imageHalfBlurred'></img>
+                        <div>
+                           <img src={srcHalfBlurred} id='imageHalfBlurred'></img>
+                           <img src={indice} id='indice'></img>
+                        </div>
+                        
                         <form>
                             <input type='text' id='textAnswer' onChange={(e) => { setAnswer(e.target.value) }} />
                         </form>

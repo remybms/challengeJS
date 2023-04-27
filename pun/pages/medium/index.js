@@ -16,7 +16,7 @@ export default function Easy() {
 
     const src = '/magasins/' + image + '.png'
     const srcFullBlurred = '/magasinsFullBlurred/' + image + '.png'
-
+    const indice = '/indices/' + image + '.png'
     const answer = '/answers/' + image + '.txt'
 
     return (
@@ -30,7 +30,11 @@ export default function Easy() {
                 <>
                     {timeLeft ? (<>
                         <h1 id='safeTimerDisplay'></h1>
-                        <img src={srcFullBlurred} id='imageHalfBlurred'></img>
+                        <div>
+                            <img src={srcFullBlurred} id='imageHalfBlurred'></img>
+                            <img src={indice} id='indice'></img>
+                        </div>
+                        
                         <form>
                             <input type='text' id='textAnswer' onChange={(e) => { setAnswer(e.target.value) }} />
                         </form>

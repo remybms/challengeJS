@@ -26,7 +26,7 @@ export default function Home() {
             Pour commencer, veuillez sélectionner votre niveau de difficulté :
             <div className={styles.form}>
               <Link href="/easy">Facile</Link>
-              <button value='medium'>Intermédiaire</button>
+              <Link href="/medium">Intermédiaire</Link>
               <button value='hard'>Difficile</button>
             </div>
               

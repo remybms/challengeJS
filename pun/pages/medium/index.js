@@ -31,7 +31,7 @@ export default function Easy() {
                     {timeLeft ? (<>
                         <h1 id='safeTimerDisplay'></h1>
                         <div>
-                            <img src={srcFullBlurred} id='imageHalfBlurred'></img>
+                            <img src={srcFullBlurred} id='imageBlurred'></img>
                             <img src={indice} id='indice'></img>
                         </div>
                         

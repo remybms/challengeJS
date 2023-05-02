@@ -2,7 +2,8 @@ export function getImageRandom() {
     return Math.floor(Math.random() * 9)
 }
 
-export function timer(start, timeLeft) {
+export function timer(start, timeLeft, image) {
+    image(getImageRandom())
     if (typeof document !== 'undefined') {
         start(true)
         var sec = 15
@@ -22,26 +23,47 @@ export function timer(start, timeLeft) {
     }
 }
 
-export function isAnswer(value, timeLeft, answer, URLanswer) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', URLanswer);
-    xhr.responseType = 'blob';
+export function isAnswer(value, timeLeft, answer, URLanswer){
     timeLeft(false)
+    if(value == readFileContent(URLanswer)){
+        answer(true)
+    }
+}
+
+export function readFileContent(url) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
     xhr.onload = function () {
         if (xhr.status === 200) {
             const reader = new FileReader();
             reader.onload = function () {
-                if (value == reader.result){
-                    answer(true)
-                }
+                return reader.result
             };
             reader.readAsText(xhr.response);
         } else {
-            console.error('Erreur de chargement du fichier: ', xhr.statusText);
+            console.error(xhr.statusText);
         }
     };
 
     xhr.send();
 }
 
+export function nextRound(start, timeLeft, checkAnswer, answer){
+    start(false)
+    timeLeft(true)
+    answer('')
+    checkAnswer(false)
+}
 
+export function setPoints(level){
+    var points = 1
+    if(level == "medium"){
+        points = 2
+    } else if (level == "hard"){
+        points = 3
+    }
+    Points += points
+}
+
+export var Points = 0

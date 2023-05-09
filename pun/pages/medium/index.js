@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react'
 import { useState } from 'react';
-import { timer, isAnswer, setPoints, Points, nextRound, displayIndice } from '@/functions/game';
+import { timer, isAnswer, setPoints, Points, nextRound, displayIndice } from '@/functions/levels';
 import styles from "../../styles/levels.module.css"
 
 

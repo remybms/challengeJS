@@ -1,4 +1,4 @@
-## Welcome into the pun project
+# Welcome into the pun project
 
 This project is created with NextJS, using Node
 
@@ -13,4 +13,4 @@ npm i
 ```
 
 WHile you're playing, there is only one rule:
-# Never use the enter button
+## Never use the enter button

@@ -6,7 +6,7 @@ export function timer(start, timeLeft, image) {
     image(getImageRandom())
     if (typeof document !== 'undefined') {
         start(true)
-        var sec = 15
+        var sec = 30
         var timer = setInterval(function () {
             if (typeof document !== 'undefined') {
                 if (document.getElementById('safeTimerDisplay') != null) {
@@ -23,22 +23,15 @@ export function timer(start, timeLeft, image) {
     }
 }
 
-export function isAnswer(value, timeLeft, answer, URLanswer){
-    timeLeft(false)
-    if(value == readFileContent(URLanswer)){
-        answer(true)
-    }
-}
-
-export function readFileContent(url) {
+export function displayIndice(URL){
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
+    xhr.open('GET', URL);
     xhr.responseType = 'blob';
     xhr.onload = function () {
         if (xhr.status === 200) {
             const reader = new FileReader();
             reader.onload = function () {
-                return reader.result
+                document.getElementById('indice').textContent = reader.result
             };
             reader.readAsText(xhr.response);
         } else {
@@ -49,11 +42,37 @@ export function readFileContent(url) {
     xhr.send();
 }
 
-export function nextRound(start, timeLeft, checkAnswer, answer){
+export function isAnswer(value, timeLeft, answer, URLanswer) {
+    timeLeft(false)
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', URLanswer);
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                if(value == reader.result){
+                    answer(true)
+                }
+            };
+            reader.readAsText(xhr.response);
+        } else {
+            console.error(xhr.statusText);
+        }
+    };
+
+    xhr.send();
+}
+
+export function nextRound(start, timeLeft, checkAnswer, answer, setRound){
     start(false)
     timeLeft(true)
     answer('')
     checkAnswer(false)
+    round++
+    if(round >= 3){
+        setRound(false)
+    }
 }
 
 export function setPoints(level){
@@ -67,3 +86,4 @@ export function setPoints(level){
 }
 
 export var Points = 0
+var round = 0

@@ -20,14 +20,14 @@ export default function Home() {
             <div>3 niveaux de difficultés sont disponibles :</div>
             <div>Facile : vous aurez à l'écran la devanture du magasin avec son nom en partie caché ainsi qu'un petit indice sur le nom à trouver</div>
             <div>Intermédiaire : vous aurez à l'écran la devanture du magasin avec son nom intégralement caché ainsi qu'un petit indice sur le nom à trouver</div>
-            <div>Difficile : vous aurez à l'écran un petit indice sur le nom du magasin à trouver</div>
+            <div>Difficile : vous aurez à l'écran le magasin intégralement flouté ainsi qu'un petit indice sur le nom du magasin à trouver</div>
           </div>
           <div>
             Pour commencer, veuillez sélectionner votre niveau de difficulté :
             <div className={styles.form}>
               <Link href="/easy">Facile</Link>
               <Link href="/medium">Intermédiaire</Link>
-              <button value='hard'>Difficile</button>
+              <Link href="/hard">Difficile</Link>
             </div>
               
           </div>

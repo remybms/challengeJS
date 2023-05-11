@@ -1,5 +1,13 @@
+var imagesAlreadyUsed = []
+
 export function getImageRandom() {
-    return Math.floor(Math.random() * 9)
+    let image
+    do {
+        image = Math.floor(Math.random() * 9)
+    } while (imagesAlreadyUsed.includes(image))
+
+    imagesAlreadyUsed.push(image)
+    return image
 }
 
 export function timer(start, timeLeft, image) {
@@ -23,7 +31,7 @@ export function timer(start, timeLeft, image) {
     }
 }
 
-export function displayIndice(URL){
+export function displayIndice(URL) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', URL);
     xhr.responseType = 'blob';
@@ -51,7 +59,7 @@ export function isAnswer(value, timeLeft, answer, URLanswer) {
         if (xhr.status === 200) {
             const reader = new FileReader();
             reader.onload = function () {
-                if(value == reader.result){
+                if (value == reader.result) {
                     answer(true)
                 }
             };
@@ -64,22 +72,22 @@ export function isAnswer(value, timeLeft, answer, URLanswer) {
     xhr.send();
 }
 
-export function nextRound(start, timeLeft, checkAnswer, answer, setRound){
+export function nextRound(start, timeLeft, checkAnswer, answer, setRound) {
     start(false)
     timeLeft(true)
     answer('')
     checkAnswer(false)
     round++
-    if(round >= 3){
+    if (round >= 3) {
         setRound(false)
     }
 }
 
-export function setPoints(level){
+export function setPoints(level) {
     var points = 1
-    if(level == "medium"){
+    if (level == "medium") {
         points = 2
-    } else if (level == "hard"){
+    } else if (level == "hard") {
         points = 3
     }
     Points += points

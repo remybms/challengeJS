@@ -21,9 +21,10 @@ export default function Easy() {
 
     const level = "hard"
     const src = '/magasins/' + image + '.png'
-    const srcBlurred = '/titleHalfBlurred/' + image + '.png'
+    const srcBlurred = '/shopBlurred/' + image + '.png'
     const indice = '/indices/' + image + '.txt'
     const answer = '/answers/' + image + '.txt'
+    
 
 
     return (

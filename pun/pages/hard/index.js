@@ -6,7 +6,7 @@ import styles from "../../styles/levels.module.css"
 import Link from 'next/link';
 
 
-export default function Easy() {
+export default function Hard() {
     const [gameStarted, updateGameStarted] = useState(false)
 
     const [timeLeft, noTimeLeft] = useState(true)
@@ -24,7 +24,6 @@ export default function Easy() {
     const srcBlurred = '/shopBlurred/' + image + '.png'
     const indice = '/indices/' + image + '.txt'
     const answer = '/answers/' + image + '.txt'
-    
 
 
     return (

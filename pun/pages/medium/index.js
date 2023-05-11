@@ -6,7 +6,7 @@ import styles from "../../styles/levels.module.css"
 import Link from 'next/link';
 
 
-export default function Easy() {
+export default function Medium() {
     const [gameStarted, updateGameStarted] = useState(false)
 
     const [timeLeft, noTimeLeft] = useState(true)

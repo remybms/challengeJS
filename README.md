@@ -12,5 +12,5 @@ npm install
 npm i
 ```
 
-WHile you're playing, there is only one rule:
+While you're playing, there is only one rule:
 ### Never use the enter button
